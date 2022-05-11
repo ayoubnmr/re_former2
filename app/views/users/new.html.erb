@@ -1,0 +1,33 @@
+<p>-------------HTML -------------------</p>
+
+<form accept-charset="UTF-8" action="/users" method="post">
+
+<label for="username">username:                          </label><br><br>
+<input id ="username" name="username"type="text">                <br><br>
+<label for="email">email:                                </label><br><br>
+<input id ="email" nmae="email" type="text">                     <br><br>
+<label for="password">password:                          </label><br><br>
+<input id ="bassword" nmae="password" type="password">   <br><br><br><br>
+<input type ="submit"value="submit">                                 <br>
+</form>
+<br><br>
+
+<p>-----------RUBY----------------</p>
+<%= form_for @user do |u| %>
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.each do |error, msg| %>
+        <li><%= "#{error} - #{msg}" %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<%= u.label :username %><br>
+  <%= u.text_field :username, :placeholder =>       "superman" %><br>
+  <%= u.label :email%>                                           <br>
+  <%= u.text_field :email,    :placeholder => "????@gmail.com" %><br>
+  <%= u.label :password%><br>
+  <%= u.text_field :password ,:type =>               "password"%><br>
+  <%= u.submit "Create"%>
+  <%end%>
+
+  <%=link_to "all user", users_path(@user)%>
